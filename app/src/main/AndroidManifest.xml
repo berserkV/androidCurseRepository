@@ -26,8 +26,18 @@
             android:screenOrientation="portrait" />
         <activity
             android:name=".avengersActivity.AvengersActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".emailActivity.EmailActivity"
             android:screenOrientation="portrait"></activity>
         <activity
+            android:name=".profileActivity.ProfileActivity"
+            android:screenOrientation="portrait"></activity>
+        <activity android:name=".newPagerActivity.ViewPagerActivity">
+            android:name=".emailActivity.EmailActivity"
+            android:screenOrientation="portrait">
+        </activity>
+        <activity android:name=".goodViewPagerActivity.GoodViewPagerActivity">
             android:name=".emailActivity.EmailActivity"
             android:screenOrientation="portrait">
             <intent-filter>
@@ -36,10 +46,6 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity
-            android:name=".profileActivity.ProfileActivity"
-            android:screenOrientation="portrait"></activity>
-        <activity android:name=".newPagerActivity.ViewPagerActivity"></activity>
     </application>
 
 </manifest>
