@@ -55,4 +55,18 @@
     <string name="fragment_one">Fragment One</string>
     <string name="fragment_two">Fragment Two</string>
     <string name="fragment_three">Fragment Three</string>
+    <string name="hint_name">Name</string>
+    <string name="hint_email">Email</string>
+    <string name="send_button">Send</string>
+
+    <!--Form(ViewPager) Activity-->
+    <string name="empty_name">Name cannot be empty</string>
+    <string name="empty_last_name">Last name cannot be empty</string>
+    <string name="sending_info">Sending info</string>
+    <string name="hint_last_name">Last name</string>
+    <string name="image">Image</string>
+    <string name="data">Data</string>
+    <string name="name">Name:</string>
+    <string name="last_name">Last name:</string>
+    <string name="email_show">Email:</string>
 </resources>

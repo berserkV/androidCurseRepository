@@ -29,15 +29,23 @@
             android:screenOrientation="portrait" />
         <activity
             android:name=".emailActivity.EmailActivity"
-            android:screenOrientation="portrait"></activity>
+            android:screenOrientation="portrait" />
         <activity
             android:name=".profileActivity.ProfileActivity"
-            android:screenOrientation="portrait"></activity>
+            android:screenOrientation="portrait" />
         <activity android:name=".newPagerActivity.ViewPagerActivity">
             android:name=".emailActivity.EmailActivity"
             android:screenOrientation="portrait">
         </activity>
         <activity android:name=".goodViewPagerActivity.GoodViewPagerActivity">
+            android:name=".emailActivity.EmailActivity"
+            android:screenOrientation="portrait">
+        </activity>
+        <activity android:name=".viewPagerFormActivity.ViewPagerActivity" >
+            android:name=".emailActivity.EmailActivity"
+            android:screenOrientation="portrait">
+        </activity>
+        <activity android:name=".viewPagerFormActivity.FormActivity">
             android:name=".emailActivity.EmailActivity"
             android:screenOrientation="portrait">
             <intent-filter>
