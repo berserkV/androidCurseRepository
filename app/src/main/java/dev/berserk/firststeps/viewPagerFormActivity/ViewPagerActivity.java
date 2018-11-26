@@ -6,6 +6,8 @@ import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
+import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.ScrollView;
@@ -55,7 +57,6 @@ public class ViewPagerActivity extends AppCompatActivity implements ViewPager.On
         }
         Util.showLog(TAG, "Message received "+name+" "+lastName+" "+email);
         setUpViewPager();
-        tellFragments();
     }
 
     private void setUpViewPager() {
@@ -135,23 +136,25 @@ public class ViewPagerActivity extends AppCompatActivity implements ViewPager.On
     }
 
     @Override
-    public void onBackPressed() {
-        tellFragments();
-        super.onBackPressed();
+    public boolean onKeyDown(int keyCode, KeyEvent event)  {
+        if (Integer.parseInt(android.os.Build.VERSION.SDK) < 5
+                && keyCode == KeyEvent.KEYCODE_BACK
+                && event.getRepeatCount() == 0) {
+            Log.d("CDA", "onKeyDown Called");
+            onBackPressed();
+        }
+
+        return super.onKeyDown(keyCode, event);
     }
 
-    private void tellFragments(){
-        List<Fragment> fragments = getSupportFragmentManager().getFragments();
-        for(Fragment f : fragments){
-            if(f != null && f instanceof ImageFragment) {
-                ((ImageFragment) f).onBackPressed();
-            }
-            if(f != null && f instanceof DataFragment) {
-                ((DataFragment) f).onBackPressed();
-            }
-            if(f != null && f instanceof EmailFragment) {
-                ((EmailFragment) f).onBackPressed();
-            }
+    public void onBackPressed() {
+        if(viewPagerMain.getCurrentItem() <= 0 ){
+            Util.createExitDialog(this, this, FormActivity.class, null );
         }
+        else{
+            viewPagerMain.setCurrentItem(viewPagerMain.getCurrentItem()-1);
+        }
+
+        return;
     }
 }

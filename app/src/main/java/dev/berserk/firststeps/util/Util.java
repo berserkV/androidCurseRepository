@@ -7,6 +7,7 @@ import android.graphics.PorterDuff;
 import android.support.design.widget.Snackbar;
 import android.support.v4.content.ContextCompat;
 import android.support.v4.widget.CircularProgressDrawable;
+import android.support.v7.app.AlertDialog;
 import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
@@ -105,5 +106,39 @@ public class Util {
 
         activity.startActivity(intent);
         activity.finish();
+    }
+
+    public static void createExitDialog(Context context, Activity activity, Class toClass,
+            HashMap<String, String> extraData) {
+        AlertDialog.Builder builder = new AlertDialog.Builder(context);
+
+        builder.setTitle("Chosen")
+                .setMessage("Do you wanna go?")
+                .setPositiveButton("Accepted",
+                        (dialog, which) -> {
+                            changeActivityAndFinish(activity, toClass, extraData);
+                            dialog.dismiss();
+                        });
+        builder.show();
+    }
+
+    public static int getRandomNumber(){
+        return  (int)(Math.random()*((3-1)+1))+1;
+    }
+
+    public static int getRandomID(){
+        return  (int)(Math.random()*((30000-1)+1))+1;
+    }
+
+    public static String setRandomImage(){
+        switch (Util.getRandomNumber()){
+            case 1:
+                return "https://www.writeups.org/wp-content/uploads/Krypto-Pre-Crisis-DC-Comics-Superman-dog.jpg";
+            case 2:
+                return "https://www.writeups.org/wp-content/uploads/Cosmo-Marvel-Comics-Guardians-of-the-Galaxy-Soviet-dog.jpg";
+            case 3:
+                return "https://upload.wikimedia.org/wikipedia/en/3/30/Lockjaw.PNG";
+        }
+        return "";
     }
 }

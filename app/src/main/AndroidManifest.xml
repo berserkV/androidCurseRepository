@@ -41,11 +41,15 @@
             android:name=".emailActivity.EmailActivity"
             android:screenOrientation="portrait">
         </activity>
-        <activity android:name=".viewPagerFormActivity.ViewPagerActivity" >
+        <activity android:name=".viewPagerFormActivity.ViewPagerActivity">
             android:name=".emailActivity.EmailActivity"
             android:screenOrientation="portrait">
         </activity>
         <activity android:name=".viewPagerFormActivity.FormActivity">
+            android:name=".emailActivity.EmailActivity"
+            android:screenOrientation="portrait">
+        </activity>
+        <activity android:name=".databaseandrecyclerview.RealRecyclerSampleActivity">
             android:name=".emailActivity.EmailActivity"
             android:screenOrientation="portrait">
             <intent-filter>
