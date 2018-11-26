@@ -13,8 +13,7 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import dev.berserk.firststeps.R;
-import dev.berserk.firststeps.emailActivity.EmailActivity;
-import dev.berserk.firststeps.util.KeyConstants;
+import dev.berserk.firststeps.util.KeysConstants;
 import dev.berserk.firststeps.util.Util;
 
 public class FormActivity extends AppCompatActivity {
@@ -90,9 +89,9 @@ public class FormActivity extends AppCompatActivity {
 
         Util.showLog(TAG, "Message received "+name+" "+lastName+" "+email);
         HashMap<String, Object> extraData = new HashMap<>();
-        extraData.put(KeyConstants.NAME, name);
-        extraData.put(KeyConstants.LAST_NAME, lastName);
-        extraData.put(KeyConstants.EMAIL, email);
+        extraData.put(KeysConstants.NAME, name);
+        extraData.put(KeysConstants.LAST_NAME, lastName);
+        extraData.put(KeysConstants.EMAIL, email);
 
         Util.changeActivityAndFinish(FormActivity.this, ViewPagerActivity.class, extraData,
                 false);

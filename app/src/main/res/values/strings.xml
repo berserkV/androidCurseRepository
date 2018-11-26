@@ -72,4 +72,10 @@
     <string name="end">End</string>
     <string name="address">Address</string>
     <string name="empty_address">Address cannot be empty</string>
+    <string name="message">Type a message</string>
+    <string name="empty_message">Message empty</string>
+    <string name="insert_message_to_send">Insert message to send</string>
+    <string name="play">Play</string>
+    <string name="pause">Pause</string>
+    <string name="stop">Stop</string>
 </resources>

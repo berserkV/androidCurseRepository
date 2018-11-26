@@ -1,15 +1,11 @@
 package dev.berserk.firststeps.databaseandrecyclerview;
 
-import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -19,7 +15,7 @@ import dev.berserk.firststeps.databaseandrecyclerview.adapter.DogShopAdapter;
 import dev.berserk.firststeps.databaseandrecyclerview.adapter.DogShopClick;
 import dev.berserk.firststeps.databaseandrecyclerview.adapter.DogShopLongClick;
 import dev.berserk.firststeps.databaseandrecyclerview.models.DogShop;
-import dev.berserk.firststeps.util.KeyConstants;
+import dev.berserk.firststeps.util.KeysConstants;
 import dev.berserk.firststeps.util.Util;
 import io.realm.Realm;
 import io.realm.RealmList;
@@ -82,8 +78,8 @@ public class RealRecyclerSampleActivity extends AppCompatActivity implements Dog
         Util.showLog(TAG, dogShop.name+" "+dogShop.address+" short");
 
         HashMap<String, Object> extraData = new HashMap<>();
-        extraData.put(KeyConstants.DOG_SHOP_ID, dogShop.dogShopID);
-        extraData.put(KeyConstants.MODE_KEY, KeyConstants.EDIT_MODE);
+        extraData.put(KeysConstants.DOG_SHOP_ID, dogShop.dogShopID);
+        extraData.put(KeysConstants.MODE_KEY, KeysConstants.EDIT_MODE);
 
         Util.changeActivityAndFinish(this, EditShopActivity.class, extraData, false);
     }
@@ -97,7 +93,7 @@ public class RealRecyclerSampleActivity extends AppCompatActivity implements Dog
             dogShops.remove(dogShop);
             dogShopAdapter.notifyDataSetChanged();
             RealmResults<DogShop> shops = realm.where(DogShop.class)
-                    .equalTo(KeyConstants.DOG_SHOP_ID, dogShop.dogShopID)
+                    .equalTo(KeysConstants.DOG_SHOP_ID, dogShop.dogShopID)
                     .findAll();
             shops.deleteAllFromRealm();
         });
@@ -112,7 +108,7 @@ public class RealRecyclerSampleActivity extends AppCompatActivity implements Dog
 
     @OnClick(R.id.floatingActionButton) public void createDogShop() {
         HashMap<String, Object> extraData = new HashMap<>();
-        extraData.put(KeyConstants.MODE_KEY, KeyConstants.CREATE_MODE);
+        extraData.put(KeysConstants.MODE_KEY, KeysConstants.CREATE_MODE);
 
         Util.changeActivityAndFinish(this, EditShopActivity.class, extraData,
                 false);

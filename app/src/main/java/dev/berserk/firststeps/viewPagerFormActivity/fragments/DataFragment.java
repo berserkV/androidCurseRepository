@@ -12,7 +12,7 @@ import android.widget.TextView;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import dev.berserk.firststeps.R;
-import dev.berserk.firststeps.util.KeyConstants;
+import dev.berserk.firststeps.util.KeysConstants;
 import dev.berserk.firststeps.util.Util;
 import dev.berserk.firststeps.viewPagerFormActivity.interfaces.OnBackPressed;
 
@@ -33,8 +33,8 @@ public class DataFragment extends Fragment implements OnBackPressed {
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        name = getArguments().getString(KeyConstants.NAME);
-        lastName = getArguments().getString(KeyConstants.LAST_NAME);
+        name = getArguments().getString(KeysConstants.NAME);
+        lastName = getArguments().getString(KeysConstants.LAST_NAME);
         Util.showLog(TAG, "Message received "+name+" "+lastName);
     }
 
@@ -56,8 +56,8 @@ public class DataFragment extends Fragment implements OnBackPressed {
         DataFragment myFragment = new DataFragment();
         Bundle args = new Bundle();
 
-        args.putString(KeyConstants.NAME, name);
-        args.putString(KeyConstants.LAST_NAME, lastName);
+        args.putString(KeysConstants.NAME, name);
+        args.putString(KeysConstants.LAST_NAME, lastName);
         myFragment.setArguments(args);
 
         return  myFragment;

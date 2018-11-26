@@ -12,7 +12,7 @@ import android.widget.TextView;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import dev.berserk.firststeps.R;
-import dev.berserk.firststeps.util.KeyConstants;
+import dev.berserk.firststeps.util.KeysConstants;
 import dev.berserk.firststeps.util.Util;
 
 public class FragmentTwo extends Fragment {
@@ -27,7 +27,7 @@ public class FragmentTwo extends Fragment {
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        message = getArguments().getString(KeyConstants.FRAGMENT_ARG_FLAG);
+        message = getArguments().getString(KeysConstants.FRAGMENT_ARG_FLAG);
         Util.showLog(TAG, "Message received "+message);
     }
 
@@ -48,7 +48,7 @@ public class FragmentTwo extends Fragment {
         FragmentTwo myFragment = new FragmentTwo();
         Bundle args = new Bundle();
 
-        args.putString(KeyConstants.FRAGMENT_ARG_FLAG, someString);
+        args.putString(KeysConstants.FRAGMENT_ARG_FLAG, someString);
         myFragment.setArguments(args);
 
         return  myFragment;

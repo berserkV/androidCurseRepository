@@ -14,7 +14,7 @@ import android.widget.ScrollView;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import dev.berserk.firststeps.R;
-import dev.berserk.firststeps.util.KeyConstants;
+import dev.berserk.firststeps.util.KeysConstants;
 import dev.berserk.firststeps.util.Util;
 import dev.berserk.firststeps.viewPagerFormActivity.fragments.DataFragment;
 import dev.berserk.firststeps.viewPagerFormActivity.fragments.EmailFragment;
@@ -48,9 +48,9 @@ public class ViewPagerActivity extends AppCompatActivity implements ViewPager.On
 
         Intent intent = getIntent();
         if (intent != null) {
-            name = intent.getStringExtra(KeyConstants.NAME);
-            lastName = intent.getStringExtra(KeyConstants.LAST_NAME);
-            email = intent.getStringExtra(KeyConstants.EMAIL);
+            name = intent.getStringExtra(KeysConstants.NAME);
+            lastName = intent.getStringExtra(KeysConstants.LAST_NAME);
+            email = intent.getStringExtra(KeysConstants.EMAIL);
         }
         Util.showLog(TAG, "Message received "+name+" "+lastName+" "+email);
         setUpViewPager();

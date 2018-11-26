@@ -15,7 +15,7 @@ import butterknife.ButterKnife;
 import de.hdodenhof.circleimageview.CircleImageView;
 import dev.berserk.firststeps.R;
 import dev.berserk.firststeps.emailActivity.EmailActivity;
-import dev.berserk.firststeps.util.KeyConstants;
+import dev.berserk.firststeps.util.KeysConstants;
 import dev.berserk.firststeps.util.URL;
 import dev.berserk.firststeps.util.Util;
 
@@ -47,7 +47,7 @@ public class ProfileActivity extends AppCompatActivity {
                 .into(circleImageViewProfile);
         Intent intent = getIntent();
         if (intent != null) {
-            email = intent.getStringExtra(KeyConstants.PROFILE);
+            email = intent.getStringExtra(KeysConstants.PROFILE);
             mTextViewInput.setText(email);
         }
     }

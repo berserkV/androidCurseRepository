@@ -16,7 +16,7 @@ import butterknife.ButterKnife;
 import butterknife.OnClick;
 import dev.berserk.firststeps.R;
 import dev.berserk.firststeps.databaseandrecyclerview.models.DogShop;
-import dev.berserk.firststeps.util.KeyConstants;
+import dev.berserk.firststeps.util.KeysConstants;
 import dev.berserk.firststeps.util.Util;
 import io.realm.Realm;
 import io.realm.RealmQuery;
@@ -62,13 +62,13 @@ public class EditShopActivity extends AppCompatActivity {
         if (getSupportActionBar() != null) {
             getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         }
-        MODE = getIntent().getStringExtra(KeyConstants.MODE_KEY);
+        MODE = getIntent().getStringExtra(KeysConstants.MODE_KEY);
         Util.showLog(TAG, "Mode: "+MODE);
         setUpMode(MODE);
     }
 
     private void setUpMode(String mode) {
-        if (mode.equals(KeyConstants.EDIT_MODE)) {
+        if (mode.equals(KeysConstants.EDIT_MODE)) {
             updateMode();
         }
     }
@@ -85,10 +85,10 @@ public class EditShopActivity extends AppCompatActivity {
     }
 
     private void updateMode() {
-        SHOP_ID = getIntent().getStringExtra(KeyConstants.DOG_SHOP_ID);
+        SHOP_ID = getIntent().getStringExtra(KeysConstants.DOG_SHOP_ID);
         Realm realm = Realm.getDefaultInstance();
         RealmQuery<DogShop> query = realm.where(DogShop.class);
-        query.equalTo(KeyConstants.DOG_SHOP_ID, SHOP_ID);
+        query.equalTo(KeysConstants.DOG_SHOP_ID, SHOP_ID);
         dogShop = query.findFirst();
         if (dogShop != null) {
             mEtName.setText(dogShop.name);
@@ -105,7 +105,7 @@ public class EditShopActivity extends AppCompatActivity {
         address = mEtAddress.getText().toString();
         Util.showLog(TAG, name+" "+address);
         if (areInputsEmpty()) {
-            if (MODE.equals(KeyConstants.CREATE_MODE)){
+            if (MODE.equals(KeysConstants.CREATE_MODE)){
                 createShop();
             }
             else {

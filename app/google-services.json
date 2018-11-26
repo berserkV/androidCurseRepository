@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "208830858191",
+    "firebase_url": "https://androidguadalajara.firebaseio.com",
+    "project_id": "androidguadalajara",
+    "storage_bucket": "androidguadalajara.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:208830858191:android:357f11ee71a6d388",
+        "android_client_info": {
+          "package_name": "dev.berserk.firststeps"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "208830858191-vo56evckvn347jped5sk6qblrk7v3c2n.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "dev.berserk.firststeps",
+            "certificate_hash": "f1cebc5055855307db7eab7668592c4dfad6034b"
+          }
+        },
+        {
+          "client_id": "208830858191-eg8qdq5ovqs9bvdsilb3ov65jn5gg5kf.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDVbSn_wmfMU6E_nhlBzkE1FHyzQ9TOsMk"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "208830858191-eg8qdq5ovqs9bvdsilb3ov65jn5gg5kf.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

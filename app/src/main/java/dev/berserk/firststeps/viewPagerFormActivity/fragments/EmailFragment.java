@@ -12,7 +12,7 @@ import android.widget.TextView;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import dev.berserk.firststeps.R;
-import dev.berserk.firststeps.util.KeyConstants;
+import dev.berserk.firststeps.util.KeysConstants;
 import dev.berserk.firststeps.util.Util;
 import dev.berserk.firststeps.viewPagerFormActivity.interfaces.OnBackPressed;
 
@@ -28,7 +28,7 @@ public class EmailFragment extends Fragment implements OnBackPressed {
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        email = getArguments().getString(KeyConstants.EMAIL);
+        email = getArguments().getString(KeysConstants.EMAIL);
         Util.showLog(TAG, "Message received "+email);
     }
 
@@ -49,7 +49,7 @@ public class EmailFragment extends Fragment implements OnBackPressed {
         EmailFragment myFragment = new EmailFragment();
         Bundle args = new Bundle();
 
-        args.putString(KeyConstants.EMAIL, email);
+        args.putString(KeysConstants.EMAIL, email);
         myFragment.setArguments(args);
 
         return  myFragment;
