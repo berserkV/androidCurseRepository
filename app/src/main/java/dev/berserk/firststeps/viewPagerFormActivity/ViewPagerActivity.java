@@ -2,7 +2,6 @@ package dev.berserk.firststeps.viewPagerFormActivity;
 
 import android.content.Intent;
 import android.support.design.widget.FloatingActionButton;
-import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -11,8 +10,6 @@ import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.ScrollView;
-
-import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -110,7 +107,8 @@ public class ViewPagerActivity extends AppCompatActivity implements ViewPager.On
     private void logout() {
         Util.showToast(getString(R.string.success_logout), getApplicationContext());
 
-        Util.changeActivityAndFinish(ViewPagerActivity.this, FormActivity.class, null);
+        Util.changeActivityAndFinish(ViewPagerActivity.this, FormActivity.class, null,
+                true);
     }
 
     @Override

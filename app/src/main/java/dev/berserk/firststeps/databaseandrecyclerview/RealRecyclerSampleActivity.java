@@ -1,5 +1,6 @@
 package dev.berserk.firststeps.databaseandrecyclerview;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.GridLayoutManager;
@@ -7,6 +8,7 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 import butterknife.BindView;
@@ -17,13 +19,17 @@ import dev.berserk.firststeps.databaseandrecyclerview.adapter.DogShopAdapter;
 import dev.berserk.firststeps.databaseandrecyclerview.adapter.DogShopClick;
 import dev.berserk.firststeps.databaseandrecyclerview.adapter.DogShopLongClick;
 import dev.berserk.firststeps.databaseandrecyclerview.models.DogShop;
+import dev.berserk.firststeps.util.KeyConstants;
 import dev.berserk.firststeps.util.Util;
+import io.realm.Realm;
+import io.realm.RealmList;
+import io.realm.RealmResults;
 
 public class RealRecyclerSampleActivity extends AppCompatActivity implements DogShopClick, DogShopLongClick {
 
     private static String TAG = RealRecyclerSampleActivity.class.getSimpleName();
 
-    private List<DogShop> dogShops = new ArrayList<>();
+    private RealmList<DogShop> dogShops = new RealmList<>();
 
     private DogShopAdapter dogShopAdapter;
 
@@ -37,6 +43,23 @@ public class RealRecyclerSampleActivity extends AppCompatActivity implements Dog
 
         ButterKnife.bind(this);
         setUpRecyclerView(mDogShopsRecyclerView);
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+
+        getRealmObjects();
+    }
+
+    private void getRealmObjects() {
+        dogShops.clear();
+        Realm realm = Realm.getDefaultInstance();
+        RealmResults<DogShop> dogShopsResults = realm.where(DogShop.class).findAll();
+
+        //dogShops.addAll(dogShopsResults.subList(0, dogShopsResults.size()));
+        dogShops.addAll(dogShopsResults);
+        dogShopAdapter.notifyDataSetChanged();
     }
 
     private void setUpRecyclerView(RecyclerView mDogShopsRecyclerView) {
@@ -56,12 +79,28 @@ public class RealRecyclerSampleActivity extends AppCompatActivity implements Dog
 
     @Override
     public void onDogShopClickListener(DogShop dogShop) {
-        Util.showLog(TAG, dogShop.name+" "+dogShop.address);
+        Util.showLog(TAG, dogShop.name+" "+dogShop.address+" short");
+
+        HashMap<String, Object> extraData = new HashMap<>();
+        extraData.put(KeyConstants.DOG_SHOP_ID, dogShop.dogShopID);
+        extraData.put(KeyConstants.MODE_KEY, KeyConstants.EDIT_MODE);
+
+        Util.changeActivityAndFinish(this, EditShopActivity.class, extraData, false);
     }
 
     @Override
     public void onDogShopLongClickListener(DogShop dogShop) {
-        Util.showLog(TAG, dogShop.name+" "+dogShop.address);
+        Util.showLog(TAG, dogShop.name+" "+dogShop.address+" long");
+
+        Realm realm = Realm.getDefaultInstance();
+        realm.executeTransaction(realm1 -> {
+            dogShops.remove(dogShop);
+            dogShopAdapter.notifyDataSetChanged();
+            RealmResults<DogShop> shops = realm.where(DogShop.class)
+                    .equalTo(KeyConstants.DOG_SHOP_ID, dogShop.dogShopID)
+                    .findAll();
+            shops.deleteAllFromRealm();
+        });
     }
 
     public DogShop createDoomie() {
@@ -71,8 +110,12 @@ public class RealRecyclerSampleActivity extends AppCompatActivity implements Dog
                 , Util.setRandomImage());
     }
 
-    @OnClick(R.id.floatingActionButton) public void addDoomie() {
-        dogShops.add(createDoomie());
+    @OnClick(R.id.floatingActionButton) public void createDogShop() {
+        HashMap<String, Object> extraData = new HashMap<>();
+        extraData.put(KeyConstants.MODE_KEY, KeyConstants.CREATE_MODE);
+
+        Util.changeActivityAndFinish(this, EditShopActivity.class, extraData,
+                false);
 
         dogShopAdapter.notifyDataSetChanged();
     }

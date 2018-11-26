@@ -11,16 +11,15 @@ import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 
-import java.util.List;
-
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import dev.berserk.firststeps.R;
 import dev.berserk.firststeps.databaseandrecyclerview.models.DogShop;
+import io.realm.RealmList;
 
 public class DogShopAdapter extends RecyclerView.Adapter<DogShopAdapter.ViewHolderAdapter> {
 
-    List<DogShop> dogShops;
+    RealmList<DogShop> dogShops;
 
     Context adapterContext;
 
@@ -28,7 +27,7 @@ public class DogShopAdapter extends RecyclerView.Adapter<DogShopAdapter.ViewHold
 
     DogShopLongClick dogShopLongClick;
 
-    public DogShopAdapter(List<DogShop> dogShops, Context adapterContext, DogShopClick dogShopClick,
+    public DogShopAdapter(RealmList<DogShop> dogShops, Context adapterContext, DogShopClick dogShopClick,
             DogShopLongClick dogShopLongClick) {
         this.dogShops = dogShops;
         this.adapterContext = adapterContext;
@@ -53,7 +52,7 @@ public class DogShopAdapter extends RecyclerView.Adapter<DogShopAdapter.ViewHold
         viewHolderAdapter.setTextsAndImage(dogShop);
         viewHolderAdapter.rootView.setOnClickListener(v -> dogShopClick.onDogShopClickListener(dogShop));
         viewHolderAdapter.rootView.setOnLongClickListener(v -> {
-            dogShopClick.onDogShopClickListener(dogShop);
+            dogShopLongClick.onDogShopLongClickListener(dogShop);
             return true;
         });
     }

@@ -81,7 +81,8 @@ public class ProfileActivity extends AppCompatActivity {
     private void logout() {
         Util.showToast(getString(R.string.success_logout), getApplicationContext());
 
-        Util.changeActivityAndFinish(ProfileActivity.this, EmailActivity.class, null);
+        Util.changeActivityAndFinish(ProfileActivity.this, EmailActivity.class, null,
+                true);
         /*
         Intent intent = new Intent(ProfileActivity.this, EmailActivity.class);
         startActivity(intent);

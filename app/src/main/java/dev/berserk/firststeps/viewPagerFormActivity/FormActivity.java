@@ -89,11 +89,12 @@ public class FormActivity extends AppCompatActivity {
         Util.showToast(getString(R.string.sending_info), FormActivity.this);
 
         Util.showLog(TAG, "Message received "+name+" "+lastName+" "+email);
-        HashMap<String, String> extraData = new HashMap<>();
+        HashMap<String, Object> extraData = new HashMap<>();
         extraData.put(KeyConstants.NAME, name);
         extraData.put(KeyConstants.LAST_NAME, lastName);
         extraData.put(KeyConstants.EMAIL, email);
 
-        Util.changeActivityAndFinish(FormActivity.this, ViewPagerActivity.class, extraData);
+        Util.changeActivityAndFinish(FormActivity.this, ViewPagerActivity.class, extraData,
+                false);
     }
 }

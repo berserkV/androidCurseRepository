@@ -88,10 +88,11 @@ public class EmailActivity extends AppCompatActivity {
     private void successLogin(String email) {
         Util.showToast(getString(R.string.success_login), EmailActivity.this);
 
-        HashMap<String, String> extraData = new HashMap<>();
+        HashMap<String, Object> extraData = new HashMap<>();
         extraData.put(KeyConstants.PROFILE, email);
 
-        Util.changeActivityAndFinish(EmailActivity.this, ProfileActivity.class, extraData);
+        Util.changeActivityAndFinish(EmailActivity.this, ProfileActivity.class, extraData,
+                true);
 
         /*
         Intent intent = new Intent(EmailActivity.this, ProfileActivity.class);

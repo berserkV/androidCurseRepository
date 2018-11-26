@@ -89,7 +89,7 @@ public class Util {
     }
 
     public static void changeActivityAndFinish(Activity activity, Class aClass,
-            HashMap<String, String> extraData) {
+            HashMap<String, Object> extraData, boolean killLastActivity) {
         Intent intent = new Intent(activity, aClass);
 
         if (extraData != null && !extraData.isEmpty()) {
@@ -105,18 +105,20 @@ public class Util {
         }
 
         activity.startActivity(intent);
-        activity.finish();
+        if (killLastActivity) {
+            activity.finish();
+        }
     }
 
     public static void createExitDialog(Context context, Activity activity, Class toClass,
-            HashMap<String, String> extraData) {
+            HashMap<String, Object> extraData) {
         AlertDialog.Builder builder = new AlertDialog.Builder(context);
 
         builder.setTitle("Chosen")
                 .setMessage("Do you wanna go?")
                 .setPositiveButton("Accepted",
                         (dialog, which) -> {
-                            changeActivityAndFinish(activity, toClass, extraData);
+                            changeActivityAndFinish(activity, toClass, extraData, false);
                             dialog.dismiss();
                         });
         builder.show();

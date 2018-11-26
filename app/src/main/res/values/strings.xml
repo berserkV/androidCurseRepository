@@ -69,4 +69,7 @@
     <string name="name">Name:</string>
     <string name="last_name">Last name:</string>
     <string name="email_show">Email:</string>
+    <string name="end">End</string>
+    <string name="address">Address</string>
+    <string name="empty_address">Address cannot be empty</string>
 </resources>
