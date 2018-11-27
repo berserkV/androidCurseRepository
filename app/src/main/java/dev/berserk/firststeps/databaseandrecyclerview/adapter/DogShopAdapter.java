@@ -89,6 +89,7 @@ public class DogShopAdapter extends RecyclerView.Adapter<DogShopAdapter.ViewHold
                     .into(mImgShop);
             mTvDogShopName.setText("Name: "+dogShop.name);
             mTvDogShopAddress.setText("Address: "+dogShop.address);
+
         }
     }
 }

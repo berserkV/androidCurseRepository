@@ -67,11 +67,15 @@
             android:name=".emailActivity.EmailActivity"
             android:screenOrientation="portrait">
         </activity>
-        <activity android:name=".mediaplayer.MusicActivity" >
+        <activity android:name=".mediaplayer.MusicActivity">
             android:name=".emailActivity.EmailActivity"
             android:screenOrientation="portrait">
         </activity>
         <activity android:name=".mediaplayer.VideoActivity">
+            android:name=".emailActivity.EmailActivity"
+            android:screenOrientation="portrait">
+        </activity>
+        <activity android:name=".dcrecyclerview.DCRecyclerViewActivity">
             android:name=".emailActivity.EmailActivity"
             android:screenOrientation="portrait">
             <intent-filter>

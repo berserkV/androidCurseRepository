@@ -115,4 +115,8 @@ public class RealRecyclerSampleActivity extends AppCompatActivity implements Dog
 
         dogShopAdapter.notifyDataSetChanged();
     }
+
+    public void createDoomies() {
+
+    }
 }
