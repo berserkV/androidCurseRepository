@@ -52,12 +52,7 @@ public class MoreComponentsActivity extends AppCompatActivity {
                 .setMessage("\nSpinnerCountries : "+String.valueOf(mSpinnerCountries.getSelectedItem()) +
                         "\nSpinnerList : "+ String.valueOf(mSpinnerList.getSelectedItem()))
                 .setPositiveButton("Accepted",
-                        new DialogInterface.OnClickListener() {
-                            @Override
-                            public void onClick(DialogInterface dialog, int which) {
-                                dialog.dismiss();
-                            }
-                        });
+                        (dialog, which) -> dialog.dismiss());
         builder.show();
     }
 

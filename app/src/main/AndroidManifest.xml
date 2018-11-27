@@ -1,10 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     package="dev.berserk.firststeps">
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
-    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED"/>
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
 
     <application
         android:name=".FirstSteps"
@@ -13,7 +15,8 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme">
+        android:theme="@style/AppTheme"
+        tools:ignore="GoogleAppIndexingWarning">
         <activity
             android:name=".MainActivity"
             android:screenOrientation="portrait" />
@@ -90,15 +93,36 @@
         </activity>
         <activity android:name=".jobscheduller.JobSchedullerActivity">
             android:name=".emailActivity.EmailActivity"
+            android:screenOrientation="portrait"></activity>
+
+        <service
+            android:name=".jobscheduller.ExampleJobService"
+            android:permission="android.permission.BIND_JOB_SERVICE" />
+
+        <activity android:name=".location.LocationSampleActivity">
+            android:name=".emailActivity.EmailActivity"
             android:screenOrientation="portrait">
+        </activity>
+        <!--
+             The API key for Google Maps-based APIs is defined as a string resource.
+             (See the file "res/values/google_maps_api.xml").
+             Note that the API key is linked to the encryption key used to sign the APK.
+             You need a different API key for each encryption key, including the release key that is used to
+             sign the APK for publishing.
+             You can define the keys for the debug and release targets in src/debug/ and src/release/. 
+        -->
+        <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="@string/google_maps_key" />
+
+        <activity android:name=".location.MapsActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <service android:name=".jobscheduller.ExampleJobService"
-            android:permission="android.permission.BIND_JOB_SERVICE"/>
+        <activity android:name=".geofences.GeoFencesActivity"></activity>
     </application>
 
 </manifest>

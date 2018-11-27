@@ -6,6 +6,7 @@ public class KeysConstants {
     public static final String EDIT_MODE = "1";
     public static final String CREATE_MODE = "0";
     public static final String DOG_SHOP_ID = "dogShopID";
+    public static final int LOCATION_PERMISSION_ID = 1;
     public static String PROFILE = "PROFILE";
     public static String MESSAGE = "MESSAGE";
     public static final String FRAGMENT_ARG_FLAG = "WHATEVER";
