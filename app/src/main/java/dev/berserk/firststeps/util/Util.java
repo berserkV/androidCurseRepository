@@ -3,8 +3,10 @@ package dev.berserk.firststeps.util;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.graphics.PorterDuff;
 import android.support.design.widget.Snackbar;
+import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
 import android.support.v4.widget.CircularProgressDrawable;
 import android.support.v7.app.AlertDialog;
@@ -142,5 +144,18 @@ public class Util {
                 return "https://upload.wikimedia.org/wikipedia/en/3/30/Lockjaw.PNG";
         }
         return "";
+    }
+
+    public static boolean hasPermission(Context context, String... permissions) {
+        if (context != null && permissions != null) {
+            for (String permission: permissions) {
+                if (ActivityCompat.checkSelfPermission(context, permission)
+                        != PackageManager.PERMISSION_GRANTED) {
+                    return false;
+                }
+            }
+        }
+
+        return true;
     }
 }
