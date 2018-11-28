@@ -1,6 +1,7 @@
 package dev.berserk.firststeps.viewPagerFormActivity;
 
 import android.content.Intent;
+import android.os.Build;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
@@ -135,7 +136,8 @@ public class ViewPagerActivity extends AppCompatActivity implements ViewPager.On
 
     @Override
     public boolean onKeyDown(int keyCode, KeyEvent event)  {
-        if (Integer.parseInt(android.os.Build.VERSION.SDK) < 5
+        //TODO
+        if (Integer.parseInt(String.valueOf(Build.VERSION.SDK_INT)) < 5
                 && keyCode == KeyEvent.KEYCODE_BACK
                 && event.getRepeatCount() == 0) {
             Log.d("CDA", "onKeyDown Called");

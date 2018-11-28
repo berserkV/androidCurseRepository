@@ -94,4 +94,6 @@
     <string name="title_activity_acelerometer">AcelerometerActivity</string>
     <string name="camera">Camera</string>
     <string name="media">Media</string>
+    <string name="pokemon_id">Pokemon ID</string>
+    <string name="starwars_id">Starwars ID</string>
 </resources>
